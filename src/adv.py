@@ -1,4 +1,6 @@
 from room import Room
+from player import Player
+import sys
 
 # Declare all the rooms
 
@@ -21,7 +23,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -38,6 +39,55 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player_one = Player('Player One', room['outside'])
+
+print(player_one)
+
+while player_one.current_room.name != 'Treasure Chamber':
+
+    direction = input('Which direction would you like to go? ')
+    print(direction)
+
+    if direction == 'n':
+        try:
+            if player_one.current_room.n_to != None:
+                player_one.move_room(player_one.current_room.n_to)
+            else:
+                raise TypeError
+        except TypeError:
+            print('There is no room to the north\n')
+    elif direction == 's':
+        try:
+            if player_one.current_room.s_to != None:
+                player_one.move_room(player_one.current_room.s_to)
+            else:
+                raise TypeError
+        except TypeError:
+            print('There is no room to the south\n')
+    elif direction == 'e':
+        try:
+            if player_one.current_room.e_to != None:
+                player_one.move_room(player_one.current_room.e_to)
+            else:
+                raise TypeError
+        except TypeError:
+            print('There is no room to the east\n')
+    elif direction == 'w':
+        try:    
+            if player_one.current_room.w_to != None:
+                player_one.move_room(player_one.current_room.w_to)
+            else:
+                raise TypeError
+        except TypeError:
+            print('There is no room to the west\n')
+    elif direction == 'q':
+        print('\nGame over!\n')
+        sys.exit()
+    else:
+        input('Please choose n, s, e, or w: ')
+
+    print(player_one)
+    print('\n')
 
 # Write a loop that:
 #
