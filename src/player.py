@@ -17,6 +17,7 @@ class Player:
     def take_item(self, item):
         # add to player inventory
         self.inventory.append(item)
+        item.on_take()
 
         # remove item from current_Room
         self.current_room.remove_item(item)

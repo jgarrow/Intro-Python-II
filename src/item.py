@@ -5,6 +5,9 @@ class Item:
     
     def __str__(self):
         return '{self.name}, {self.description}'.format(self=self)
+
+    def on_take(self):
+        print(f'Picked up {self.name}')
     
     def on_drop(self):
         print(f'Dropped {self.name}')
