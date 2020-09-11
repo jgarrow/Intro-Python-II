@@ -1,6 +1,6 @@
 from room import Room
 from player import Player
-from item import Item
+from item import Item, LightSource
 import sys
 
 # Declare items
@@ -14,7 +14,7 @@ item = {
 
     'knife': Item('knife', 'A sharp, but short blade. Best suited for close combat.'),
 
-    'torch': Item('torch', 'When lit, this torch can provide light for ~2 hours.'),
+    'torch': LightSource('torch', 'When lit, this torch can provide light for ~2 hours.'),
 
     'bow': Item('bow', 'A sniper\'s weapon of choice, the bow is best for long distance combat.'),
 

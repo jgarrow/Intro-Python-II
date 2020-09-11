@@ -24,6 +24,7 @@ class Player:
     def drop_item(self, drop_item):
         # add the item to the current_room
         self.current_room.add_item(drop_item)
+        drop_item.on_drop()
 
         # remove the item from the player's inventory
         for i, item in enumerate(self.inventory):
